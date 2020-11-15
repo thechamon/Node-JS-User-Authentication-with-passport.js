@@ -13,12 +13,15 @@ mongoose.set("useUnifiedTopology", true);
 
 mongoose
   .connect(db)
-  .then(() => console.log("Database(MongoDB) Connected..."))
+  .then(() => console.log("Database(MongoDB) connected with app..."))
   .catch(() => console.log(err));
 
 // EJS
 app.use(expressLayouts);
 app.set("view engine", "ejs");
+
+// Bodyparser
+app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use("/", require("./routes/index"));
